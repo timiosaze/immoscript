@@ -19,7 +19,7 @@ from deep_translator import (GoogleTranslator,
                              batch_detection)
 ua = UserAgent()
 #MYSQL CONNECTION PARAMS
-cnx = mysql.connector.connect(host='localhost', user='python', password='password',database='immoscoutdb')
+cnx = mysql.connector.connect(host='localhost', user='root', password='password',database='immoscoutdb')
 cursor = cnx.cursor(buffered=True)
 start = time.time()
 
@@ -41,6 +41,7 @@ def getAllZurichRentProperties():
         time.sleep(1)
         req = Request(
             url = 'https://www.immoscout24.ch/de/immobilien/mieten/ort-zuerich?pn=' + str(page) + '&r=100',
+            data=None,
             headers={'User-Agent': ua.random}
         )
         try:
@@ -69,6 +70,7 @@ def getAllZurichBuyProperties():
         time.sleep(1)
         req = Request(
             url = 'https://www.immoscout24.ch/de/immobilien/kaufen/ort-zuerich?pn=' + str(page) + '&r=100',
+            data=None,
             headers={'User-Agent': ua.random}
         )
         try:
